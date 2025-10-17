@@ -1,0 +1,1819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mohamed Asmathulla G — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1724;
+      --card: #0b1220;
+      --muted: #9aa7b6;
+      --accent: #6ee7b7;
+      --accent-dark: #10b981;
+      --accent-light: #a7f3d0;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-2: rgba(255, 255, 255, 0.02);
+      --text: #e6eef6;
+      --text-secondary: #94a3b8;
+      --shadow: rgba(3, 6, 12, 0.6);
+      --gradient: linear-gradient(135deg, #0ea5a4, #4ade80);
+      --gradient-dark: linear-gradient(135deg, #0d9488, #10b981);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #071022 0%, #081428 60%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(8, 12, 20, 0.8), rgba(8, 12, 20, 0.4));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      padding: 12px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      transition: all 0.3s ease;
+    }
+
+    header.scrolled {
+      padding: 8px 22px;
+      background: rgba(8, 12, 20, 0.9);
+    }
+
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .logo {
+      height: 48px;
+      width: 48px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #042;
+      font-weight: 700;
+      font-size: 18px;
+      box-shadow: 0 6px 18px var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(3, 6, 12, 0.8);
+    }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    nav a.active {
+      color: var(--accent);
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    /* Container & Layout */
+    .container {
+      max-width: 1100px;
+      margin: 28px auto;
+      padding: 0 18px;
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 22px;
+      align-items: center;
+      margin-bottom: 22px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 8px 30px var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gradient);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(3, 6, 12, 0.8);
+    }
+
+    .panel:hover::before {
+      opacity: 1;
+    }
+
+    /* About Section */
+    .about h1 {
+      margin: 0 0 6px 0;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--text), var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .contact {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pill {
+      background: var(--glass);
+      padding: 6px 12px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 13px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+    }
+
+    .pill:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+
+    .pill a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .pill a:hover {
+      color: var(--accent-light);
+    }
+
+    .objective {
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Photo Section */
+    .photo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 700;
+      color: #042;
+      background: var(--gradient);
+      box-shadow: 0 8px 24px var(--shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .avatar::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgba(2, 6, 12, 0.8);
+    }
+
+    .avatar:hover::after {
+      opacity: 1;
+    }
+
+    /* Grid Sections */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .col-8 {
+      grid-column: span 8;
+    }
+
+    .col-4 {
+      grid-column: span 4;
+    }
+
+    .card-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    /* Skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      background: var(--glass-2);
+      padding: 12px 14px;
+      border-radius: 12px;
+      min-width: 140px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 6px 16px rgba(3, 6, 12, 0.4);
+    }
+
+    .skill-icon {
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .skill:hover .skill-icon {
+      transform: scale(1.1);
+    }
+
+    .skill .name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .job {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      transition: all 0.3s ease;
+    }
+
+    .job:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 6px 16px rgba(3, 6, 12, 0.4);
+    }
+
+    .job .meta {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Education */
+    .edu {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .inst-img {
+      width: 88px;
+      height: 88px;
+      border-radius: 10px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #042;
+      transition: all 0.3s ease;
+    }
+
+    .inst-img:hover {
+      transform: scale(1.05);
+    }
+
+    .inst-img1 {
+      width: 88px;
+      height: 88px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #042;
+      transition: all 0.3s ease;
+    }
+
+    .inst-img1:hover {
+      transform: scale(1.05);
+    }
+    .edu .edu-body {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .project-card {
+      background: var(--card);
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 10px 25px rgba(3, 6, 12, 0.5);
+    }
+
+    .proj-thumb {
+      width: 120px;
+      height: 80px;
+      border-radius: 10px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #042;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .project-card:hover .proj-thumb {
+      transform: scale(1.05);
+    }
+
+    .proj-body {
+      flex: 1;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--accent);
+      border: 1px solid rgba(255, 255, 255, 0.02);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(3, 6, 12, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    /* Publications */
+    .pub {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .pub .pdf {
+      width: 68px;
+      height: 88px;
+      background: var(--gradient);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #042;
+      transition: all 0.3s ease;
+    }
+
+    .pub:hover .pdf {
+      transform: scale(1.05);
+    }
+
+    /* Leadership */
+    .leaders {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .leader {
+      width: 220px;
+      background: var(--glass-2);
+      padding: 12px;
+      border-radius: 10px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .leader:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.03);
+      box-shadow: 0 6px 16px rgba(3, 6, 12, 0.4);
+    }
+
+    .leader img {
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .leader:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 90;
+      background: rgba(2, 6, 12, 0.8);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      padding: 20px;
+    }
+
+    .modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal .inner {
+      width: min(860px, 94%);
+      background: var(--card);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 20px 60px rgba(3, 6, 12, 0.8);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal.active .inner {
+      transform: scale(1);
+    }
+
+    .modal .close {
+      float: right;
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    .modal .close:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--muted);
+      font-weight: 700;
+      margin-right: 8px;
+      font-size: 13px;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: var(--gradient);
+      z-index: 100;
+      transition: width 0.3s ease;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--muted);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 10px;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      margin-left: auto;
+      z-index: 60;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--card);
+      z-index: 50;
+      padding: 80px 20px 20px;
+      transition: right 0.3s ease;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      display: block;
+      padding: 12px 0;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-nav a:hover, .mobile-nav a.active {
+      color: var(--accent);
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 55;
+    }
+
+    /* Dark/Light Theme */
+    body.light-theme {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #64748b;
+      --accent: #0ea5a4;
+      --accent-dark: #0d9488;
+      --accent-light: #14b8a6;
+      --glass: rgba(0, 0, 0, 0.03);
+      --glass-2: rgba(0, 0, 0, 0.02);
+      --text: #1e293b;
+      --text-secondary: #475569;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --gradient: linear-gradient(135deg, #0ea5a4, #4ade80);
+      --gradient-dark: linear-gradient(135deg, #0d9488, #10b981);
+      background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 60%);
+    }
+
+    body.light-theme .panel {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9));
+      box-shadow: 0 8px 30px var(--shadow);
+    }
+
+    body.light-theme .skill, 
+    body.light-theme .job, 
+    body.light-theme .project-card,
+    body.light-theme .leader {
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-theme .pill {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    body.light-theme header {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    }
+
+    body.light-theme .mobile-nav {
+      background: var(--card);
+    }
+
+    /* Enhanced Responsive Design */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 16px;
+      }
+      
+      .hero {
+        gap: 18px;
+      }
+      
+      .skills {
+        justify-content: center;
+      }
+      
+      .skill {
+        min-width: 130px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      
+      .projects {
+        grid-template-columns: 1fr;
+      }
+      
+      .col-8, .col-4 {
+        grid-column: auto;
+      }
+      
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .contact {
+        justify-content: center;
+      }
+      
+      .skills {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 20px auto;
+      }
+      
+      .hero {
+        margin-bottom: 18px;
+      }
+      
+      .panel {
+        padding: 20px;
+      }
+      
+      .avatar {
+        width: 140px;
+        height: 140px;
+        font-size: 36px;
+      }
+      
+      .about h1 {
+        font-size: 24px;
+      }
+      
+      .subtitle {
+        font-size: 15px;
+      }
+      
+      .contact {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .pill {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .skill {
+        min-width: 100%;
+        justify-content: flex-start;
+      }
+      
+      .project-card {
+        flex-direction: column;
+      }
+      
+      .proj-thumb {
+        width: 100%;
+        height: 120px;
+      }
+      
+      .pub {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .pub .pdf {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+      
+      .edu {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .inst-img {
+        width: 100px;
+        height: 100px;
+      }
+      
+      .leader {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 10px 16px;
+      }
+      
+      .container {
+        padding: 0 12px;
+      }
+      
+      .panel {
+        padding: 16px;
+        border-radius: 12px;
+      }
+      
+      .avatar {
+        width: 120px;
+        height: 120px;
+        font-size: 32px;
+      }
+      
+      .about h1 {
+        font-size: 22px;
+      }
+      
+      .subtitle {
+        font-size: 14px;
+      }
+      
+      .objective {
+        font-size: 14px;
+      }
+      
+      h2 {
+        font-size: 18px;
+      }
+      
+      .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+      }
+      
+      .mobile-nav {
+        width: 85%;
+      }
+      
+      .modal .inner {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .container {
+        padding: 0 10px;
+      }
+      
+      .panel {
+        padding: 14px;
+      }
+      
+      .avatar {
+        width: 100px;
+        height: 100px;
+        font-size: 28px;
+      }
+      
+      .about h1 {
+        font-size: 20px;
+      }
+      
+      .contact {
+        font-size: 13px;
+      }
+      
+      .pill {
+        font-size: 12px;
+        padding: 6px 10px;
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      .theme-toggle,
+      .mobile-menu-btn,
+      .progress-bar,
+      .btn {
+        display: none !important;
+      }
+      
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .panel {
+        box-shadow: none;
+        border: 1px solid #ddd;
+      }
+    }
+
+    /* High Contrast Mode Support */
+    @media (prefers-contrast: high) {
+      :root {
+        --accent: #00ff00;
+        --text: #ffffff;
+        --muted: #cccccc;
+      }
+    }
+
+    /* Reduced Motion Support */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      
+      .fade-in {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* Touch Device Optimizations */
+    @media (hover: none) {
+      .skill:hover,
+      .project-card:hover,
+      .job:hover,
+      .leader:hover {
+        transform: none;
+      }
+      
+      .panel:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="logo">MA</div>
+      <div>
+        <div style="font-weight:700">Mohamed Asmathulla G</div>
+        <div style="font-size:13px;color:var(--muted)">Python AI & Automation · Web & Flutter Developer</div>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#edu">Education</a>
+      <a href="#projects">Projects</a>
+      <a href="#pubs">Publications</a>
+      <a href="#lead">Leadership</a>
+    </nav>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">🌙</button>
+    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open navigation menu">☰</button>
+  </header>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation menu">✕</button>
+    <a href="#home" class="active">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#work">Work</a>
+    <a href="#edu">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#pubs">Publications</a>
+    <a href="#lead">Leadership</a>
+  </div>
+
+  <main class="container">
+    <!-- HERO / HOME -->
+    <section id="home" class="hero">
+      <div class="panel about fade-in">
+        <h1>Mohamed Asmathulla G</h1>
+        <div class="subtitle">Python AI & Automation Developer | Web & Flutter Application Developer</div>
+        <div class="contact">
+          <div class="pill">📧 python.asmath1290@gmail.com</div>
+          <div class="pill">📱 +91 63744 09006</div>
+          <div class="pill">📍 Karur, India 639114</div>
+          <div class="pill">🎂 29 September 2005</div>
+          <div class="pill">GitHub: <a href="https://github.com/Mr-asmath/" target="_blank" rel="noopener">Mr-asmath</a></div>
+          <div class="pill">LinkedIn: <a href="https://www.linkedin.com/in/mohamed-asmathulla-g-2024a8287/" target="_blank" rel="noopener">Profile</a></div>
+        </div>
+
+        <p class="objective">
+          Innovative and results-driven Python AI developer and Data Analyst with experience in AI automation, web development, and Flutter applications. Passionate about leveraging data to generate insights, build predictive models, and design intelligent solutions for impactful projects. Skilled in machine learning, deep learning, data analysis, statistical modeling, and full-stack development, with strong expertise in Python, SQL, R, and data visualization tools.
+        </p>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn" href="#pubs">Publications</a>
+          <a class="btn" href="#lead">Leadership</a>
+          <a class="btn" href="#" id="downloadResume">Download Resume</a>
+        </div>
+      </div>
+
+      <aside class="panel photo fade-in">
+        <div class="avatar">
+          <img src="https://mohamedasmathulla.unaux.com/MYPHOTO.jpg" 
+               style="width:100%; height:100%; object-fit:cover; border-radius: 16px;" 
+               alt="Mohamed Asmathulla G"
+               onerror="this.style.display='none'; this.parentElement.innerHTML='MA';">
+        </div>
+        <div style="font-weight:700">Ingen Dynamics — Python AI & Automation</div>
+        <div class="small" style="margin-top:6px; color:var(--muted)">Trainee · 8 months</div>
+        <div style="margin-top:10px; font-size:13px; color:var(--muted)">
+          Currently studying B.Tech CSE • Chettinad College of Engineering and Technology • CGPA: 8.7 (2025)
+        </div>
+      </aside>
+    </section>
+
+    <!-- GRID: Skills + Work -->
+    <section class="grid">
+      <div class="col-8 panel fade-in">
+        <div class="card-title">
+          <h2 id="skills">Professional Skills</h2>
+          <div class="small">Core & Technical</div>
+        </div>
+        <div class="skills" aria-hidden="false">
+          <!-- skill: Python -->
+          <div class="skill" title="Python">
+            <div class="skill-icon" style=" color: #042;">
+              <img src="https://mohamedasmathulla.unaux.com/images/python.png" 
+                style="width:100%; height:100%; object-fit:cover;" 
+                alt="Python Skill Image">
+            </div>
+            <div>
+              <div class="name">Python</div>
+              <div class="small" style="color:var(--muted)">AI, ML, automation, scripting</div>
+            </div>
+          </div>
+
+          <!-- JS -->
+          <div class="skill" title="JavaScript">
+            <div class="skill-icon" style="background: #F7DF1E; color: #000;">JS</div>
+            <div><div class="name">JavaScript</div><div class="small" style="color:var(--muted)">Frontend & Node.js</div></div>
+          </div>
+
+          <!-- HTML/CSS -->
+          <div class="skill" title="HTML & CSS">
+            <div class="skill-icon" style="background: #fff; color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/html.png" 
+                style="width:100%; height:100%; object-fit:cover;" 
+                alt="HTML & CSS Skill Image">
+            </div>
+            <div><div class="name">HTML / CSS</div><div class="small" style="color:var(--muted)">Responsive UI</div></div>
+          </div>
+
+          <!-- Java -->
+          <div class="skill" title="Java">
+            <div class="skill-icon" style="background: #fff; color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/java.png" 
+                style="width:100%; height:100%; object-fit:cover;" 
+                alt="JAVA Skill Image">
+            </div>
+            <div><div class="name">Java</div><div class="small" style="color:var(--muted)">Core & Android</div></div>
+          </div>
+
+          <!-- SQL / MongoDB -->
+          <div class="skill" title="Databases">
+            <div class="skill-icon" style="color: #042;">
+              <img src="https://mohamedasmathulla.unaux.com/images/sql.png" 
+                style="width:100%; height:130%; object-fit:cover; background-size: cover;" 
+                alt="SQL Skill Image">
+            </div>
+            <div><div class="name">SQL / MongoDB</div><div class="small" style="color:var(--muted)">Data storage & queries</div></div>
+          </div>
+
+          <!-- Flutter -->
+          <div class="skill" title="Flutter">
+            <div class="skill-icon" style="background: #fff; color: #7dd3fc;">
+              <img src="https://mohamedasmathulla.unaux.com/images/flutter.png" 
+                style="width:100%; height:100%; object-fit:cover;" 
+                alt="Flutter Skill Image">
+            </div>
+            <div><div class="name">Flutter</div><div class="small" style="color:var(--muted)">Cross-platform apps</div></div>
+          </div>
+
+          <!-- ML / DL -->
+          <div class="skill" title="AI & ML">
+            <div class="skill-icon" style="background: #7C3AED; color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/ai.png" 
+                style="width:100%; height:100%; object-fit:cover;" 
+                alt="AI & ML Skill Image">
+            </div>
+            <div><div class="name">AI / ML / DL</div><div class="small" style="color:var(--muted)">Modeling & inference</div></div>
+          </div>
+
+          <!-- R -->
+          <div class="skill" title="R">
+            <div class="skill-icon" style=" color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/r.png" 
+                style="width:130%; height:100%;" 
+                alt="R Skill Image">
+            </div>
+            <div><div class="name">R</div><div class="small" style="color:var(--muted)">Statistical computing</div></div>
+          </div>
+
+          <!-- C/C++ -->
+          <div class="skill" title="C/C++">
+            <div class="skill-icon" style=" color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/c.png" 
+                style="width:150%; height:150%; object-fit:cover;" 
+                alt="C/C++ Skill Image">
+            </div>
+            <div><div class="name">C / C++</div><div class="small" style="color:var(--muted)">System programming</div></div>
+          </div>
+
+          <!-- Kotlin -->
+          <div class="skill" title="Kotlin">
+            <div class="skill-icon" style=" color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/kotlin.png" 
+                style="width:150%; height:150%; object-fit:cover;" 
+                alt="Kotlin Skill Image">
+            </div>
+            <div><div class="name">Kotlin</div><div class="small" style="color:var(--muted)">Android development</div></div>
+          </div>
+
+          <!-- PHP -->
+          <div class="skill" title="PHP">
+            <div class="skill-icon" style=" color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/php.png" 
+                style="width:120%; height:100%; " 
+                alt="PHP Skill Image">
+            </div>
+            <div><div class="name">PHP</div><div class="small" style="color:var(--muted)">Web backend</div></div>
+          </div>
+
+          <!-- Excel -->
+          <div class="skill" title="Excel">
+            <div class="skill-icon" style=" color: #fff;">
+              <img src="https://mohamedasmathulla.unaux.com/images/excel.png" 
+                style="width:120%; height:100%; " 
+                alt="Excel Skill Image">
+            </div>
+            <div><div class="name">Excel</div><div class="small" style="color:var(--muted)">Data analysis</div></div>
+          </div>
+        </div>
+
+        <!-- Basic & Tools -->
+        <div style="margin-top:14px">
+          <div class="small" style="margin-bottom:8px; color:var(--muted)">
+            <strong>Core Skills:</strong> Python AI Development, Web Application Development, Flutter Application Development, Data Analysis & Visualization, Statistical Modeling & Predictive Analytics
+          </div>
+          <div class="small" style="margin-bottom:8px; color:var(--muted)">
+            <strong>Programming Languages & Tools:</strong> Python, R, SQL, MongoDB, Java, JavaScript, HTML, CSS, Excel, Pandas, NumPy, Matplotlib, Seaborn, Plotly, Jupyter Notebook, Google Colab, Power BI
+          </div>
+          <div class="small" style="color:var(--muted)">
+            <strong>Other languages & tools:</strong> C, C++, R, Kotlin, PHP, Excel, Data Structures, IoT, Arduino
+          </div>
+        </div>
+      </div>
+
+      <!-- Work Experience column -->
+      <div class="col-4 panel fade-in">
+        <div class="card-title">
+          <h2 id="work">Work Experience</h2>
+          <div class="small">Selected</div>
+        </div>
+
+        <div class="timeline">
+          <div class="job">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:700">Python AI & Automation Developer (Trainee)</div>
+              <div class="small">Ingen Dynamics · 8 months</div>
+            </div>
+            <div class="meta" style="margin-top:6px">Built AI automation scripts, trained models for real-time tasks, and helped deploy prototypes.</div>
+            <ul style="margin-top:8px; color:var(--muted); padding-left:18px">
+              <li>Developed Python modules for automation & data pipelines</li>
+              <li>Worked on ML/DL model integration and testing</li>
+              <li>Collaborated with embedded & web teams to integrate services</li>
+            </ul>
+          </div>
+
+          <div class="job">
+            <div style="font-weight:700">Intern — Web Developer</div>
+            <div class="small">Nan Logic Ltd</div>
+            <div class="meta" style="margin-top:6px">Implemented responsive UI and front-end features using HTML, CSS and JS.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION + PROJECTS -->
+    <section class="grid" style="margin-top:20px">
+      <div class="col-8 panel fade-in">
+        <div class="card-title">
+          <h2 id="projects">Projects & Achievements</h2>
+          <div class="small">Selected highlights</div>
+        </div>
+
+        <div class="projects">
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #0ea5a4, #4ade80);">
+              <img src="https://mohamedasmathulla.unaux.com/fpl-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="FPL Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='FPL';">
+            </div>
+            <div class="proj-body">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-weight:800">FPL — File Part List</div>
+                <div style="font-size:12px;color:var(--muted)">Automation · Data</div>
+              </div>
+              <div class="small" style="margin-top:6px">An automation and data-management system for parts/files used in manufacturing workflows.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/FPL" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/fpl-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('FPL','FPL — File Part List','Automation and data management system. Technologies: Python, Flask, MongoDB.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #f97316, #ef4444);">
+              <img src="https://mohamedasmathulla.unaux.com/customshop-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="CustomShop Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='CustomShop';">
+            </div>
+            <div class="proj-body">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="font-weight:800">CustomShop Bill Master</div>
+                <div class="small">Awarded</div>
+              </div>
+              <div class="small" style="margin-top:6px">Won Kalam Award 2024 and 3rd Prize in Techno Battle 2024 — billing & POS automation project.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/CustomShop" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/customshop-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('CustomShop','CustomShop Bill Master','Award-winning POS/billing automation; Tech stack: JavaScript, Node, SQL/MongoDB.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #8b5cf6, #06b6d4);">
+              <img src="https://mohamedasmathulla.unaux.com/pengobot-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="PengoBot Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='PengoBot';">
+            </div>
+            <div class="proj-body">
+              <div style="font-weight:800">PengoBot — Speech AI Robot</div>
+              <div class="small" style="margin-top:6px">Penguin-style personal assistant robot using Python NLP + Arduino hardware.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/PengoBot" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/pengobot-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('PengoBot','PengoBot','Speech AI robot: Python NLP, Arduino Nano, OLED eyes, motorized gestures.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
+              <img src="https://mohamedasmathulla.unaux.com/smarttrack-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="SmartTrack Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='SmartTrack';">
+            </div>
+            <div class="proj-body">
+              <div style="font-weight:800">SmartTrack AI</div>
+              <div class="small" style="margin-top:6px">Person-tracking & facial analytics framework (TF.js & face-api.js), runs client-side for privacy.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/SmartTrack" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/smarttrack-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('SmartTrack','SmartTrack AI','Client-side face & object detection framework using TensorFlow.js and face-api.js.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
+              <img src="https://mohamedasmathulla.unaux.com/smarttrack-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="FYM Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='FYM';">
+            </div>
+            <div class="proj-body">
+              <div style="font-weight:800">FYM</div>
+              <div class="small" style="margin-top:6px">Person-tracking & facial analytics framework (TF.js & face-api.js), runs client-side for privacy.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/SmartTrack" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/smarttrack-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('FYM','FYM AI','Client-side face & object detection framework using TensorFlow.js and face-api.js.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
+              <img src="https://mohamedasmathulla.unaux.com/smarttrack-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="EduPulse Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='EduPulse';">
+            </div>
+            <div class="proj-body">
+              <div style="font-weight:800">EduPulse</div>
+              <div class="small" style="margin-top:6px">Person-tracking & facial analytics framework (TF.js & face-api.js), runs client-side for privacy.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/SmartTrack" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/smarttrack-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('EduPulse','EduPulse','Client-side face & object detection framework using TensorFlow.js and face-api.js.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
+              <img src="https://mohamedasmathulla.unaux.com/smarttrack-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="MyLittleHeart Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='MyLittleHeart';">
+            </div>
+            <div class="proj-body">
+              <div style="font-weight:800">MyLittleHeart</div>
+              <div class="small" style="margin-top:6px">Person-tracking & facial analytics framework (TF.js & face-api.js), runs client-side for privacy.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/SmartTrack" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/smarttrack-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('MyLittleHeart','MyLittleHeart','Client-side face & object detection framework using TensorFlow.js and face-api.js.')">Details</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="proj-thumb" style="background: linear-gradient(135deg, #10b981, #3b82f6);">
+              <img src="https://mohamedasmathulla.unaux.com/smarttrack-logo.png" 
+                   style="width:100%; height:100%; object-fit:cover;"
+                   alt="Online Examination System Project"
+                   onerror="this.style.display='none'; this.parentElement.innerHTML='Online Examination System';">
+            </div>
+            <div class="proj-body">
+              <div style="font-weight:800">Online Examination System</div>
+              <div class="small" style="margin-top:6px">Person-tracking & facial analytics framework (TF.js & face-api.js), runs client-side for privacy.</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://github.com/Mr-asmath/SmartTrack" target="_blank" rel="noopener">GitHub</a>
+                <a class="btn btn-secondary" href="https://mohamedasmathulla.unaux.com/smarttrack-documentation.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="#" onclick="openProj('Online Examination System','Online Examination System','Client-side face & object detection framework using TensorFlow.js and face-api.js.')">Details</a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Additional Projects Section -->
+        <!--div style="margin-top: 20px;">
+          <h3 style="margin-bottom: 12px; color: var(--accent);">InGen Dynamics Projects</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
+            <div class="pill">MyLittleHeart – AI heart care robot</div>
+            <div class="pill">Online Examination System – Assessment platform</div>
+          </div>
+        </div-->
+      </div>
+
+      <div class="col-4 panel fade-in" id="edu">
+        <div class="card-title">
+          <h2>Education</h2>
+          <div class="small">Academic background</div>
+        </div>
+
+        <div class="edu">
+          <div class="inst-img1" style="background-color: #fff;">
+            <img src="https://mohamedasmathulla.unaux.com/images/ccet.png" 
+                style="width:120%; height:70%;" 
+                alt="Kotlin Skill Image" style="background-color: #fff;">
+          </div>
+          <div class="edu-body">
+            <div style="font-weight:800">B.Tech — Computer Science & Engineering</div>
+            <div class="small">Chettinad College of Engineering & Technology, Karur</div>
+            <div class="small" style="margin-top:6px; color:var(--muted)">Currently 4th semester — CGPA: 8.7 (2025)</div>
+          </div>
+        </div>
+
+        <hr style="border:none;height:12px;background:transparent"/>
+
+        <div style="margin-top:6px">
+          <div style="font-weight:700">Higher Secondary (HSC)</div>
+          <div class="small">Sacred Heart Higher Secondary School — 2023</div>
+        </div>
+
+        <div style="margin-top:8px">
+          <div style="font-weight:700">Secondary (SSLC)</div>
+          <div class="small">Sacred Heart Higher Secondary School — 2022</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Publications & Leadership -->
+    <section class="grid" style="margin-top:18px">
+      <div class="col-8 panel fade-in">
+        <div class="card-title">
+          <h2 id="pubs">Publications</h2>
+          <div class="small">Selected</div>
+        </div>
+
+        <div style="display:flex; gap:12px; flex-direction:column">
+          <div class="pub">
+            <div class="pdf">PDF</div>
+            <div>
+              <div style="font-weight:800">Deep Learning in Real-Time Applications</div>
+              <div class="small" style="margin-top:6px">Published in IJASREM</div>
+              <div style="margin-top:8px">
+                <a class="btn" href="https://www.ijaresm.com/uploaded_files/document_file/Mohamed_Asmathulla_Gm6Vu.pdf" target="_blank" rel="noopener">Open / Download PDF</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="color:var(--muted); font-size:13px; margin-top:6px">
+            Other research entries (ResearchGate / Academia) include project reports on SmartTrack AI, EduPulse, and MyLittleHeart (Arduino-based heart-monitor).
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4 panel fade-in" id="lead">
+        <div class="card-title">
+          <h2>Leadership & Clubs</h2>
+          <div class="small">Community roles</div>
+        </div>
+
+        <div class="leaders">
+          <div class="leader">
+            <img src="https://mohamedasmathulla.unaux.com/images/leo.png" alt="Leo Club Logo" 
+                 onerror="this.src='https://placehold.co/64x64?text=Leo'" style="background-color: #fff;"/>
+            <div>
+              <div style="font-weight:700">Leo Club President</div>
+              <div class="small">Chettinad College of Engineering and Technology (2025 - Present)</div>
+            </div>
+          </div>
+
+          <div class="leader">
+            <img src="https://mohamedasmathulla.unaux.com/project-lead-logo.png" alt="Team" 
+                 onerror="this.src='https://placehold.co/64x64?text=Team'"/>
+            <div>
+              <div style="font-weight:700">Project Lead</div>
+              <div class="small">Led teams for Techno Battle 2024 & prototype demos.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="panel" style="margin-top:22px">
+      <div style="font-weight:700">Let's build something — <span style="color:var(--accent)">python.asmath1290@gmail.com</span></div>
+      <div style="margin-top:8px; color:var(--muted)">© Mohamed Asmathulla G • Ingen Dynamics • Chettinad College of Engineering & Technology</div>
+    </footer>
+  </main>
+
+  <!-- Modal (for project / pdf) -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="inner" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="close" onclick="closeModal()">✕</button>
+      <h3 id="modal-title" style="margin-top:4px"></h3>
+      <div id="modal-body" style="color:var(--muted); margin-top:8px"></div>
+      <div style="margin-top:12px">
+        <a id="modal-link" class="btn" href="#" target="_blank" rel="noopener">Open</a>
+        <button class="btn" style="margin-left:8px" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // DOM elements
+    const progressBar = document.querySelector('.progress-bar');
+    const themeToggle = document.getElementById('themeToggle');
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileNavClose = document.getElementById('mobileNavClose');
+    const downloadResume = document.getElementById('downloadResume');
+    const navLinks = document.querySelectorAll('nav a, .mobile-nav a');
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check for saved theme preference
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeToggle.textContent = '☀️';
+      }
+      
+      // Initial fade in check
+      fadeInOnScroll();
+    });
+
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const winHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+      progressBar.style.width = `${scrollPercent}%`;
+      
+      // Header scroll effect
+      const header = document.querySelector('header');
+      if (scrollTop > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Active nav link
+      const sections = document.querySelectorAll('section');
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (scrollTop >= sectionTop && scrollTop < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Fade in elements on scroll
+    const fadeInOnScroll = () => {
+      fadeElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', fadeInOnScroll);
+
+    // Theme toggle
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      if (document.body.classList.contains('light-theme')) {
+        themeToggle.textContent = '☀️';
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeToggle.textContent = '🌙';
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Mobile menu
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    mobileNavClose.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (mobileNav.classList.contains('active') && 
+          !mobileNav.contains(e.target) && 
+          e.target !== mobileMenuBtn) {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Download resume
+    downloadResume.addEventListener('click', (e) => {
+      e.preventDefault();
+      // In a real implementation, this would link to an actual resume file
+      window.open('https://mohamedasmathulla.unaux.com/resume.pdf', '_blank');
+    });
+
+    // Modal helpers
+    function openProj(id, title, desc){
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-body').textContent = desc;
+      showModal();
+    }
+    
+    function openPub(title, desc, pdfUrl){
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-body').textContent = desc;
+      const link = document.getElementById('modal-link');
+      link.href = pdfUrl || '#';
+      link.textContent = pdfUrl ? 'Open PDF' : 'No PDF linked';
+      showModal();
+    }
+    
+    function showModal(){
+      const modal = document.getElementById('modal');
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal(){
+      const modal = document.getElementById('modal');
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Smooth scroll for nav
+    document.querySelectorAll('nav a[href^="#"], .mobile-nav a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = a.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('modal').addEventListener('click', (e) => {
+      if(e.target === e.currentTarget) closeModal();
+    });
+
+    // Add keyboard accessibility
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal();
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    });
+
+    // Touch device optimizations
+    if ('ontouchstart' in window) {
+      document.body.classList.add('touch-device');
+    }
+
+    // Performance optimization - lazy load images
+    document.addEventListener('DOMContentLoaded', function() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        img.loading = 'lazy';
+      });
+    });
+  </script>
+</body>
+</html>
